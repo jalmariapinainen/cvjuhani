@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>canvas</title>
+    </head>
+    <body>
+        <h1>liikuta neliötä nuolinäppäimistöllä</h1>
+        <canvas id = "peli" width="2543px" height="1700px" style = "background-color: black;">
+        </canvas>
+        <script>
+            const canvas = document.querySelector("#peli");
+            const ctx = canvas.getContext("2d");
+            let x = 750;
+            let y = 500;
+            function piirra() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "blue";
+                ctx.fillRect(x, y, 100, 100);
+            }
+            piirra();
+            document.addEventListener("keydown", function(event) {
+                if(event.key == "ArrowUp") {
+                    y -= 50;
+                } else if(event.key == "ArrowDown") {
+                    y += 50;
+                } else if(event.key == "ArrowLeft") {
+                    x-=50;
+                } else if(event.key == "ArrowRight") {
+                    x += 50;
+                }
+                piirra();
+            });
+            </script>
+    </body>
+</html>

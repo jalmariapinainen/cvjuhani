@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+</head>
+<body>
+    <h1 id="otsikko">Tervetuloa!</h1>
+    <p id="teksti"></p>
+
+    <input type="text" id="nimi">
+
+    <button id="tervehdi">tervehdi</button>
+    <button id="vari">vaihda väri</button>
+    <button id="lisaa">lisää teksti</button>
+
+    <script>
+        const otsikko = document.querySelector("#otsikko");
+        const teksti = document.querySelector("#teksti");
+        const nimikentta = document.querySelector("#nimi");
+
+        document.querySelector("#tervehdi")
+            .addEventListener("click", function() {
+                const nimi = nimikentta.value;
+
+                if (nimi.trim() === "") {
+                    teksti.textContent = "syötä nimesi";
+                } else {
+                    teksti.textContent = "tervehdys " + nimi;
+                }
+            });
+
+        document.querySelector("#vari")
+            .addEventListener("click", function() {
+                otsikko.style.color = "blue";
+                otsikko.style.backgroundColor = "yellow";
+            });
+
+        document.querySelector("#lisaa")
+            .addEventListener("click", function() {
+                const uusi = document.createElement("p");
+                uusi.textContent = "uusi elementti";
+                document.body.appendChild(uusi);
+            });
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "b") {
+                teksti.style.color = "blue";
+            }
+            else if (event.key === "y") {
+                teksti.style.backgroundColor = "yellow";
+            }
+            else if (event.key === "i") {
+                const uusi = document.createElement("p");
+                uusi.textContent = "uusi elementti";
+                document.body.appendChild(uusi);
+            }
+        });
+    </script>
+</body>
+</html>
